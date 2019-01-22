@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
   #Create
   # GET: /users/signup
-  get "users/signup" do
-    erb :"users/signup"
+  get "/users/signup" do
+    erb :"users/signup.html"
   end
 
   # POST: /users/signup
@@ -18,17 +18,17 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect "/login"
+	    redirect "users/login"
 	  else
-	    redirect "/failure"
+	    redirect "users/failure"
 	  end
-      redirect "/account"
+      redirect "users/account"
   end
 
   # GET: /users/5
-  get "/users/:id" do
-    erb :"/users/show.html"
-  end
+  # get "/users/:id" do
+  #   erb :"/users/show.html"
+  # end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do

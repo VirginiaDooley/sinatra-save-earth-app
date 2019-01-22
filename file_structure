@@ -1,7 +1,5 @@
-├── Gemfile
-├── Gemfile.lock
-├── README.md
-├── Rakefile
+NEED TO BUILD
+
 ├── app
 │ ├── controllers
 │ │ ├── application_controller.rb
@@ -26,4 +24,25 @@
 ├── config.ru
 ├── db
 ├── public
-├──
+├── Gemfile
+├── Gemfile.lock
+├── README.md
+├── Rakefile
+
+
+AUTO GENERATED WITH CORNEAL
+
+└─app
+  ├── controllers
+  │   ├──application_controller.rb
+  │   └──new_model_controller.rb
+  ├── models
+  │   └──new_model.rb
+  └── views
+      ├──new_models
+      │  ├──index.html.rb.erb
+      │  ├──show.html.rb.erb
+      │  ├──new.html.rb.erb
+      │  └──edit.html.rb.erb
+      ├── layout.erb
+      └── welcome.erb

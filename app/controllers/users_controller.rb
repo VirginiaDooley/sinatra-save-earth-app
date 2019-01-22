@@ -7,13 +7,13 @@ class UsersController < ApplicationController
 
   #Create
   # GET: /users/signup
-  get "/signup" do
-    erb :"/signup"
+  get "users/signup" do
+    erb :"users/signup"
   end
 
   # POST: /users/signup
   post "/signup" do
-  # searches for User params and authenticates  
+  # searches for User params and authenticates
     @user = User.find_by(email: params[:email], password: params[:password])
 
     if @user && @user.authenticate(params[:password])

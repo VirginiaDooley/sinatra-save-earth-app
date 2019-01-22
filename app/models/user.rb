@@ -1,4 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :actions
   has_secure_password
+  has_many :actions
 end

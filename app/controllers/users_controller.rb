@@ -18,15 +18,16 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect "/login"
+	    redirect "users/login"
 	  else
-	    redirect "/failure"
+	    redirect "users/failure"
 	  end
-      redirect "/account"
+      redirect "users/account"
   end
 
   # GET: /users/5
   get "/users/:id" do
+    @user = User.find(session[:user_id])
     erb :"/users/account.html"
   end
 

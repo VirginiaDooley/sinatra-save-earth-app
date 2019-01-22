@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
   # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
-  end
+  # get "/users" do
+  #   erb :"/users/index.html"
+  # end
 
   #Create
   # GET: /users/signup
@@ -12,23 +12,23 @@ class UsersController < ApplicationController
   end
 
   # POST: /users/signup
-  post "/signup" do
+  post "users/signup" do
   # searches for User params and authenticates
     @user = User.find_by(email: params[:email], password: params[:password])
 
     if @user && @user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect "users/login"
+	    redirect "/login"
 	  else
-	    redirect "users/failure"
+	    redirect "/failure"
 	  end
-      redirect "users/account"
+      redirect "/account"
   end
 
   # GET: /users/5
-  # get "/users/:id" do
-  #   erb :"/users/show.html"
-  # end
+  get "/users/:id" do
+    erb :"/users/account.html"
+  end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do

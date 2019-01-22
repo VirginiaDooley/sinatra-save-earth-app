@@ -11,9 +11,18 @@ class UsersController < ApplicationController
     erb :"/signup"
   end
 
-  # POST: /users
+  # POST: /users/signup
   post "/signup" do
-    redirect "/account"
+  # searches for User params and authenticates  
+    @user = User.find_by(email: params[:email], password: params[:password])
+
+    if @user && @user.authenticate(params[:password])
+	    session[:user_id] = user.id
+	    redirect "/login"
+	  else
+	    redirect "/failure"
+	  end
+      redirect "/account"
   end
 
   # GET: /users/5

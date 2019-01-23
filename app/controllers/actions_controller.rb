@@ -4,6 +4,7 @@ class ActionsController < ApplicationController
     erb :"/actions/index.html"
   end
 
+  #Create
   get "/actions/new" do
     @users = User.all
     erb :"/actions/new.html"
@@ -17,11 +18,14 @@ class ActionsController < ApplicationController
     redirect "/actions/#{action.id}"
   end
 
+  #Read
   get "/actions/:id" do
     action = Action.find(params[:id])
+    @actions = Action.all
     erb :"/actions/show.html"
   end
 
+  #Update
   get "/actions/:id/edit" do
     erb :"/actions/edit.html"
   end
@@ -29,7 +33,8 @@ class ActionsController < ApplicationController
   patch "/actions/:id" do
     redirect '/actions/:id'
   end
-
+  
+  #Delete
   delete "/actions/:id/delete" do
     redirect '/actions'
   end

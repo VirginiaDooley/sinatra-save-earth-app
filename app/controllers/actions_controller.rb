@@ -2,17 +2,21 @@ class ActionsController < ApplicationController
 
   # GET: /actions
   get "/actions" do
+    @actions = Actions.all
     erb :"/actions/index.html"
   end
 
   # GET: /actions/new
   get "/actions/new" do
+    @users = User.all
     erb :"/actions/new.html"
   end
 
   # POST: /actions
   post "/actions" do
-    redirect "/actions"
+    action = Action.create(action_name: params[:action_name], status: params[:status])
+    session[:action_id] = action.id
+    redirect "actions/#{@action.id}"
   end
 
   # GET: /actions/5

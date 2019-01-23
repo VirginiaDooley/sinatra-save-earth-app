@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   #Read
   get "/users/account" do
     user = User.find(session[:user_id])
+    @actions = Action.all
     erb :"/users/account.html"
   end
 

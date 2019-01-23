@@ -11,7 +11,6 @@ class ActionsController < ApplicationController
   end
 
   post "/actions/create" do
-    binding.pry
     action = Action.create(action_name: params[:action_name], status: params[:status])
     session[:action_id] = action.id
 
@@ -33,7 +32,7 @@ class ActionsController < ApplicationController
   patch "/actions/:id" do
     redirect '/actions/:id'
   end
-  
+
   #Delete
   delete "/actions/:id/delete" do
     redirect '/actions'

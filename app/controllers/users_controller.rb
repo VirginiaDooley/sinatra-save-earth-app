@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   # POST: /users/signup
   post "/users/signup" do
-
+  #does not let a user sign up with a empty field
     if params[:username] == "" || params[:password] == ""
       redirect 'users/failure.html'
     else

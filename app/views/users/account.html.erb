@@ -3,10 +3,12 @@
 <h2>Here are your actions to date:</h2>
 
 <% @actions.each do %>
-<li>
-  <ol>Action Name:<%= @action.action_name %></ol>
-  <li>Action Status:<%= @action.status %>
-</li>
+<p>
+  <li>
+    <ol>Action Name:<%= @action.action_name %></ol>
+    <li>Action Status:<%= @action.status %>
+  </li>
+</p>
 
 <h2><a href="/actions/new">Create a new action</a> to save the planet.</h2>
 

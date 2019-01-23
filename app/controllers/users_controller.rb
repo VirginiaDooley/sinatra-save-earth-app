@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
 
   #Create
-  # GET: /users/signup
   get "/users/signup" do
     erb :"users/signup.html"
   end
 
-  # POST: /users/signup
   post "/users/signup" do
   #does not let a user sign up with a empty field
     if params[:username] == "" || params[:password] == ""
@@ -18,7 +16,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET: /users/account/5
+  #Read
   get "/users/account" do
     user = User.find(session[:user_id])
     erb :"/users/account.html"
@@ -39,21 +37,22 @@ class UsersController < ApplicationController
 	  end
   end
 
-  # GET: /users/5/edit
+  #Edit
   get "/users/:id/edit" do
     erb :"/users/edit"
   end
 
-  # PATCH: /users/5
+  #Patch
   patch "/users/:id" do
     redirect "/users/:id"
   end
 
-  # DELETE: /users/5/delete
+  #Delete
   delete "/users/:id/delete" do
     redirect "/users"
   end
 
+  #Helpers to check current session
   helpers do
 		def logged_in?
 			!!session[:user_id]

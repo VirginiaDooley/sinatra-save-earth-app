@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  get "/users" do
+    @actions = Action.all
+    erb :"/users/index.html"
+  end
+
   #Create
   get "/users/signup" do
     erb :"users/signup.html"

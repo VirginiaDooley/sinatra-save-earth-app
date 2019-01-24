@@ -1,6 +1,8 @@
 class ActionsController < ApplicationController
 
   get "/actions" do
+    @actions = Action.all
+    @users = User.all
     erb :"/actions/index.html"
   end
 
@@ -17,16 +19,16 @@ class ActionsController < ApplicationController
     redirect "/actions/#{action.id}"
   end
 
-  #Read
-  get "/actions/:id" do
-    action = Action.find(params[:id])
-    @actions = Action.all
-    erb :"/actions/show.html"
-  end
-
   #Update
   get "/actions/:id/edit" do
+    @action = Action.find(params[:id])
+    @users = User.all
     erb :"/actions/edit.html"
+  end
+
+  get "/actions/:id" do
+    @action = Action.find(params[:id])
+    erb :"/actions/show.html"
   end
 
   patch "/actions/:id" do

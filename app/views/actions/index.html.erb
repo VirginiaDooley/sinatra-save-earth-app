@@ -1,1 +1,8 @@
-<h1>This is the Model's index page.</h1>
+<p>Action Name:<%= @action.action_name %></p>
+<p>Action Status:<%= @action.status %></p>
+
+All your Actions to date
+<%@actions.each do |action|%>
+<p>Action Name:<%= action.action_name %></p>
+<p>Action Status:<%= action.status %></p>
+<% end %>

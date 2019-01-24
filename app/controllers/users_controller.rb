@@ -37,20 +37,32 @@ class UsersController < ApplicationController
 	  end
   end
 
-  #Edit
+  #Update
   get "/users/:id/edit" do
-    erb :"/users/edit"
+    user = User.find(session[:user_id])
+    session[:user_id] = user.id
+
+    erb :"/users/edit.html"
   end
 
   #Patch
   patch "/users/:id" do
-    redirect "/users/:id"
+    user = User.find(session[:user_id])
+    session[:user_id] = user.id
+    user.username = params[:username]
+    user.save
+
+    redirect "/users/show"
   end
 
   #Delete
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
+  # delete "/users/:id/delete" do
+  #   user = User.find(session[:user_id])
+  #   session[:user_id] = user.id
+  #   user.delete
+  #
+  #   redirect "welcome"
+  # end
 
   #Helpers to check current session
   helpers do

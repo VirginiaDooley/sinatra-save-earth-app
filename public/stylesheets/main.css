@@ -12,8 +12,11 @@
   }
 
   /* --- Welcome Page Styles --- */
+
   body {
-    background-color: lightblue;
+    /* background-color: white; */
+    background-image: url("/images/PATTERN.jpg");
+    background-size: contain;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;

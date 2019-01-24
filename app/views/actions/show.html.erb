@@ -1,8 +1,9 @@
+<%= current_user.action_name.last%>
+
 <%@actions.each do |action|%>
 <p>
   <li>
     <ol>Action Name:<%= action.action_name %></ol>
-    <li>Action Status:<%= action.status %>
+    <li>Action Status:<%= action.status %></li>
 <% end %>
-  </li>
 </p>

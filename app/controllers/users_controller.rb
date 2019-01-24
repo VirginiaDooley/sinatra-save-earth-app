@@ -12,16 +12,11 @@ class UsersController < ApplicationController
     else
       user = User.create(username: params[:username], password: params[:password])
       session[:user_id] = user.id
-      redirect '/users/account'
+      redirect '/users/show'
     end
   end
 
   #Read
-  get "/users/account" do
-    user = User.find(session[:user_id])
-    erb :"/users/account.html"
-  end
-
   get "/users/show" do
     user = User.find(session[:user_id])
     erb :"/users/show.html"
@@ -36,7 +31,7 @@ class UsersController < ApplicationController
 
 	  if user && user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect "users/account"
+	    redirect "users/show"
 	  else
 	    redirect "users/failure"
 	  end

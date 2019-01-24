@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
 	  if user && user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect "users/show"
+	    redirect "users"
 	  else
 	    redirect "users/failure"
 	  end

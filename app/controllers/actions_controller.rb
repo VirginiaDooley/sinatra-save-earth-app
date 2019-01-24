@@ -7,8 +7,8 @@ class ActionsController < ApplicationController
   end
 
   post "/actions/create" do
-    action = Action.create(action_name: params[:action_name], status: params[:status])
-    session[:action_id] = action.id
+    user = User.find(session[:user_id])
+    action = Action.create(params[:action])
 
     redirect "/actions/#{action.id}"
   end
@@ -27,6 +27,7 @@ class ActionsController < ApplicationController
   end
 
   get "/actions/:id" do
+    @user = User.find(session[:user_id])
     @action = Action.find(params[:id])
     erb :"/actions/show.html"
   end

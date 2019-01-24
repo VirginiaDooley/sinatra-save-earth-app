@@ -1,8 +1,5 @@
-<p>Action Name:<%= @action.action_name %></p>
-<p>Action Status:<%= @action.status %></p>
-
 All your Actions to date
-<%@actions.each do |action|%>
+<%@user.actions.each do |action|%>
 <p>Action Name:<%= action.action_name %></p>
 <p>Action Status:<%= action.status %></p>
 <% end %>

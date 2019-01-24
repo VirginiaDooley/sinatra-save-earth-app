@@ -1,0 +1,10 @@
+<h2><%= current_user.username %> Here are your actions to date:</h2>
+
+<%@actions.each do |action|%>
+<p>
+  <li>
+    <ol>Action Name:<%= action.action_name %></ol>
+    <li>Action Status:<%= action.status %>
+<% end %>
+  </li>
+</p>

@@ -10,6 +10,8 @@ class ActionsController < ApplicationController
     action = Action.create(params[:action])
     actions = Action.all
     user = User.find(session[:user_id])
+    action.user
+    action.save
     if !params["action"]["action_name"].empty?
       user.actions << Action.create(action_name: params["action"]["action_name"], status: params["action"]["status"])
     end

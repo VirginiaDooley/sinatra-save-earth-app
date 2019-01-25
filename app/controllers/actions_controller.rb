@@ -7,16 +7,16 @@ class ActionsController < ApplicationController
   end
 
   post "/actions/create" do
-    action = Action.create(params[:action])
+    @action = Action.create(params[:action])
     actions = Action.all
     user = User.find(session[:user_id])
-    action.user
-    action.save
+    user.id = @action.user_id
+    # user.save
     if !params["action"]["action_name"].empty?
       user.actions << Action.create(action_name: params["action"]["action_name"], status: params["action"]["status"])
     end
 
-    redirect "/actions/#{action.id}"
+    redirect "/actions/#{@action.id}"
   end
 
   get "/actions/:id" do

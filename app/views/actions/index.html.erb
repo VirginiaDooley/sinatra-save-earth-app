@@ -1,7 +1,20 @@
-All your Actions to date
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>All your Actions to date:</h1>
+
 <%@actions.each do |action|%>
-<p>Action Name:<%= action.action_name %></p>
-<p>Action Status:<%= action.status %></p>
+<p>
+  <ul>
+    <li>Action Name: <%= action.action_name %>
+    </li>
+
+    Action Status: <%= action.status %>
+  </ul>
+</p>
 <% end %>
+</html>
+</body>
+
 
 <h5><a href="/users">Return to menu</a></h5>

@@ -59,6 +59,11 @@ class UsersController < ApplicationController
     redirect "/users/show"
   end
 
+  get "/logout" do
+   session.clear
+   redirect "/"
+  end
+
   #Delete
   # delete "/users/:id/delete" do
   #   user = User.find(session[:user_id])

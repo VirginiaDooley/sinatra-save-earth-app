@@ -19,12 +19,13 @@ class ActionsController < ApplicationController
 
   get "/actions/:id" do
     @action = Action.find(params[:id])
+
     erb :"/actions/show.html"
   end
 
   #Update
   get "/actions/:id/edit" do
-    @action = Action.find(params[:id])
+    @action = Action.find(session[:user_id])
     @users = User.all
     erb :"/actions/edit.html"
   end

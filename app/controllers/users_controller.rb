@@ -25,12 +25,6 @@ class UsersController < ApplicationController
   end
 
   #Read
-  get "/users/show" do
-    user = User.find(session[:user_id])
-    @actions = Action.all
-
-    erb :"/users/show.html"
-  end
 
   get "/users/login" do
     erb :"users/login.html"
@@ -45,6 +39,12 @@ class UsersController < ApplicationController
 	  else
 	    redirect "users/failure"
 	  end
+  end
+
+  get '/users/:id' do
+   @user = User.find(session[:user_id])
+   @action = Action.find(session[:user_id])
+   erb :"/users/show.html"
   end
 
   #Update

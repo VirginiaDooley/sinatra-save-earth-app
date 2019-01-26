@@ -12,11 +12,11 @@ class UsersController < ApplicationController
   post "/users/signup" do
   #does not let a user sign up with a empty field
     if params[:username] == "" || params[:password] == ""
-      redirect 'users/failure.html'
+      redirect 'users/failure'
     else
       user = User.create(username: params[:username], password: params[:password])
       session[:user_id] = user.id
-      redirect '/users/index'
+      redirect '/users'
     end
   end
 

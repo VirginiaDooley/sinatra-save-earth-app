@@ -9,11 +9,12 @@ class ActionsController < ApplicationController
   post "/actions/create" do
     @action = Action.create(params[:action])
     actions = Action.all
-    user = User.find(session[:user_id])
-    user.id = @action.user_id
-    if !params["action"]["action_name"].empty?
-      user.actions << Action.create(action_name: params["action"]["action_name"], status: params["action"]["status"])
-    end
+    @user = User.find(session[:user_id])
+    @user.id = @action.user_id
+    # if !params["action"]["action_name"].empty?
+    #   user.actions << Action.create(action_name: params["action"]["action_name"], status: params["action"]["status"])
+    # end
+    binding.pry
 
     redirect "/actions/#{@action.id}"
   end

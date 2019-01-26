@@ -27,6 +27,8 @@ class UsersController < ApplicationController
   #Read
   get "/users/show" do
     user = User.find(session[:user_id])
+    @actions = Action.all
+
     erb :"/users/show.html"
   end
 
@@ -59,7 +61,7 @@ class UsersController < ApplicationController
     session[:user_id] = user.id
     user.username = params[:username]
     user.save
-
+    #ADD FLASH MESSAGE HERE TO CONFIRM EDIT
     redirect "/users/show"
   end
 

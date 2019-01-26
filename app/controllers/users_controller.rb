@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   get "/users" do
-    erb :"/users/index.html"
+    if logged_in?
+      erb :"/users/index.html"
+    else
+      erb :"/users/failure.html"
+    end
   end
 
   #Create

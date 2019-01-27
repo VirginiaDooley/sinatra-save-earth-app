@@ -8,19 +8,9 @@ class ActionsController < ApplicationController
 
   post "/actions/create" do
     @action = Action.create(params[:action])
-    user = User.find(session[:user_id])
-
-    # if !params["action"]["action_name"].empty?
-    #   user.actions << Action.create(action_name: params["action"]["action_name"], status: params["action"]["status"])
-    # end
+    @action.save
 
     redirect "/actions/#{@action.id}"
-  end
-
-  get "/actions/:id" do
-    @action = Action.find(params[:id])
-
-    erb :"/actions/show.html"
   end
 
   #Update
@@ -30,11 +20,18 @@ class ActionsController < ApplicationController
     erb :"/actions/edit.html"
   end
 
+  #Read
+  get "/actions/:id" do
+    @action = Action.find(params[:id])
+    erb :"/actions/show.html"
+  end
+
   get "/actions" do
     @actions = Action.all
     erb :"/actions/index.html"
   end
 
+  #Update
   patch "/actions/:id" do
     redirect '/actions/:id'
   end

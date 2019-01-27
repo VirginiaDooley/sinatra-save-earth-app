@@ -5,6 +5,7 @@
 <% @user.actions.each do |action| %>
 <p>
   <ul>
+    <li>Action #: <%= action.id %></li>
     <li>Action Name: <%= action.action_name %></li>
     <li>Action Status: <%= action.status %></li>
   </ul>

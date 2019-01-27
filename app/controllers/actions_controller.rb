@@ -8,7 +8,6 @@ class ActionsController < ApplicationController
 
   post "/actions/create" do
     @action = Action.create(params[:action])
-    @action.save
 
     redirect "/actions/#{@action.id}"
   end
@@ -33,7 +32,9 @@ class ActionsController < ApplicationController
 
   #Update
   patch "/actions/:id" do
-    redirect '/actions/:id'
+    @action = Action.find(params[:id])
+      @action.update(params[:action])
+    redirect "/actions/#{@action.id}"
   end
 
   #Delete

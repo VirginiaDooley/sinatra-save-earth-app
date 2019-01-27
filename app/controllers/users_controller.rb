@@ -43,7 +43,6 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
    @user = User.find(session[:user_id])
-   @action = Action.find(session[:user_id])
    erb :"/users/show.html"
   end
 

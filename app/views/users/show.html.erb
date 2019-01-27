@@ -1,12 +1,14 @@
 <h1>Username: <%= @user.username %></h1><br>
 <h4>These are your actions to date:</h4><br>
-<ul>
   <!-- add ability to edit here -->
-  <% @user.actions.each do |action| %>
-  <li>Action ID: <%= action.id %></li>
-  <li>Action Name: <%= action.action_name %></li>
-  <li>Status: <%= action.status %></li><br>
-  <% end %>
-</ul>
+
+<% @user.actions.each do |action| %>
+<p>
+  <ul>
+    <li>Action Name: <%= action.action_name %></li>
+    <li>Action Status: <%= action.status %></li>
+  </ul>
+</p>
+<% end %>
 
 <h5><a href="/users">Return to menu</a></h5>

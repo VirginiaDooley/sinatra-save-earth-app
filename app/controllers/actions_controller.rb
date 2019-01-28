@@ -19,14 +19,14 @@ class ActionsController < ApplicationController
   end
 
   #Read
-  get "/actions/:id" do
-    @action = Action.find(params[:id])
-    erb :"/actions/show.html"
-  end
-
   get "/actions" do
     @actions = Action.all
     erb :"/actions/index.html"
+  end
+
+  get "/actions/:id" do
+    @action = Action.find(params[:id])
+    erb :"/actions/show.html"
   end
 
   #Update
@@ -46,10 +46,14 @@ class ActionsController < ApplicationController
   end
 
   #Delete
-  delete "/actions/:id/" do
-    @action = Action.find(params[:id])
-    @action.delete
-    erb :"/actions/index.html"
+  delete "/actions/:id" do
+    @action = Action.find_by_id(params[:id])
+    if logged_in? && @action.user == current_user
+      @action.delete
+      redirect "/actions"
+    else
+      redirect "/actions/#{@action.id}"
+    end
   end
 
  end

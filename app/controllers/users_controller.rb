@@ -43,7 +43,6 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     current_user
-
     erb :"/users/show.html"
   end
 

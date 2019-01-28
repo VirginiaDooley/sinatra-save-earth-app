@@ -4,12 +4,11 @@
 <% current_user.actions.each do |action| %>
 <p>
   <ul>
-    <li>Action #<%= action.id %></li>
+    <li><a href="/actions/<%= action.id %>">Action #<%= action.id %></a></li>
     <li>Action Name: <%= action.action_name %></li>
     <li>Action Status: <%= action.status %></li>
-    <li><a href="/actions/<%= action.id %>/edit">Edit this action</a></li>
   </ul>
 </p>
 <% end %>
 
-<h5><a href="/users">Return to menu</a></h5>
+<h5><a href="/users">Return to main menu</a></h5>

@@ -3,14 +3,10 @@
   Action Name: <%= @action.action_name %><br>
   Action Status: <%= @action.status %></p>
 
-  <!-- delete -->
-   <form method="post" action="/actions/<%= @action.id %>">
+  <!-- delete action-->
+   <form action="/actions/<%= @action.id %>" method="POST">
+     <input type="hidden" name="_method" value="DELETE" id="hidden">
+     <input type="submit" name="submit" value="Delete Action">
+  </form>
 
-     <input id="hidden" type="hidden" name="_method" value="DELETE">
-     <input id="submit" type="submit" value="delete">
-
-   </form><br>
-
-<h5><a href="/actions/:id/edit">Edit your actions</a></h5><br>
-<h5><a href="/users/show">View all your actions</a></h5><br>
 <h5><a href="/users">Return to menu</a></h5><br>

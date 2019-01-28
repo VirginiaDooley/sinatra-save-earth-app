@@ -1,6 +1,6 @@
 * build *
 
-create development video for submitting project
+create development video for submitting project https://drive.google.com/file/d/1_vmOX28gvUsL5Y-YsQzKawKH3lW3JcEV/view
 build delete form and route in user and action views and controllers
 create flash messages for update and created action
 create flash message for update username
@@ -8,6 +8,7 @@ add styling to forms
 add points to the action table so a user can calculate at end
 add image badge for points
 create presentation video
+
 
 * research *
 require_relative vs require in config.ru

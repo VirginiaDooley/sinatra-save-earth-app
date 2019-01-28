@@ -40,7 +40,8 @@ class ActionsController < ApplicationController
 
   patch "/actions/:id" do
     @action = Action.find(params[:id])
-      @action.update(params[:action])
+    @action.update(params[:action])
+    @action.save
     redirect "/actions/#{@action.id}"
   end
 

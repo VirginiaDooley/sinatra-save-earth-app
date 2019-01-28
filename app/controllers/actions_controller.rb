@@ -11,15 +11,16 @@ class ActionsController < ApplicationController
   end
 
   post "/actions/create" do
+    @user = current_user
     @action = Action.create(params[:action])
-
+    @user.actions << @action
+    session[:user_id] = @action.id
     redirect "/actions/#{@action.id}"
-
   end
 
   #Update
   get "/actions/:id/edit" do
-    @action = Action.find(session[:user_id])
+    @action = Action.find(session[:id])
 
     erb :"/actions/edit.html"
   end

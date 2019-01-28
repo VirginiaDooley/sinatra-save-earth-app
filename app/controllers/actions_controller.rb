@@ -10,7 +10,7 @@ class ActionsController < ApplicationController
     @action = Action.create(params[:action])
 
     redirect "/actions/#{@action.id}"
-    binding.pry
+
   end
 
   #Update

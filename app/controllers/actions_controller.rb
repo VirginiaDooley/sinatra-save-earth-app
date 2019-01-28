@@ -14,15 +14,8 @@ class ActionsController < ApplicationController
     @user = current_user
     @action = Action.create(params[:action])
     @user.actions << @action
-    session[:user_id] = @action.id
+    session[:user_id] = @action.user_id
     redirect "/actions/#{@action.id}"
-  end
-
-  #Update
-  get "/actions/:id/edit" do
-    @action = Action.find(session[:id])
-
-    erb :"/actions/edit.html"
   end
 
   #Read
@@ -37,6 +30,12 @@ class ActionsController < ApplicationController
   end
 
   #Update
+  get "/actions/:id/edit" do
+    #need to replace session user_id with action id
+    @action = Action.find(session[:user_id])
+    erb :"/actions/edit.html"
+  end
+
   patch "/actions/:id" do
     @action = Action.find(params[:id])
       @action.update(params[:action])

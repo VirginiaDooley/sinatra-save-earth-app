@@ -2,8 +2,12 @@ class ActionsController < ApplicationController
 
   #Create
   get "/actions/new" do
-    @users = User.all
-    erb :"/actions/new.html"
+    if logged_in?
+      @user = current_user
+      erb :"/actions/new.html"
+    else
+      redirect 'users/failure.html'
+    end
   end
 
   post "/actions/create" do

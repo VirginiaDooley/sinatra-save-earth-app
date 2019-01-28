@@ -7,7 +7,7 @@
     <li>Action #<%= action.id %></li>
     <li>Action Name: <%= action.action_name %></li>
     <li>Action Status: <%= action.status %></li>
-    <li><a href="/actions/:id/edit">Edit this action</a></li>
+    <li><a href="/actions/<%= action.id %>/edit">Edit this action</a></li>
   </ul>
 </p>
 <% end %>

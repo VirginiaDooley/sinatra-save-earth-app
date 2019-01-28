@@ -32,7 +32,9 @@ class ActionsController < ApplicationController
   #Update
   get "/actions/:id/edit" do
     #need to replace session user_id with action id
-    @action = Action.find(session[:user_id])
+    # @action = Action.find(session[:user_id])
+    @action = Action.find(params[:id])
+    @users = User.all
     erb :"/actions/edit.html"
   end
 

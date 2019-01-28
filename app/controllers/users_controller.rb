@@ -70,13 +70,4 @@ class UsersController < ApplicationController
    redirect "/"
   end
 
-  #Delete
-  # delete "/users/:id/delete" do
-  #   user = User.find(session[:user_id])
-  #   session[:user_id] = user.id
-  #   user.delete
-  #
-  #   redirect "welcome"
-  # end
-
 end

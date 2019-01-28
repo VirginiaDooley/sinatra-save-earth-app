@@ -10,7 +10,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :'welcome.html'
+    if logged_in?
+      erb :"/users/index.html"
+    else
+      erb :"welcome.html"
+    end
+
   end
 
 

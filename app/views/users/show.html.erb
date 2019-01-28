@@ -1,5 +1,5 @@
 <h1>Username: <%= @user.username %></h1><br>
-<h4>These are your actions to date:</h4><br>
+<h4>These are your actions to date. Click on each to update.</h4><br>
   <!-- add ability to edit here -->
 
 <% @user.actions.each do |action| %>
@@ -8,6 +8,7 @@
     <li>Action #: <%= action.id %></li>
     <li>Action Name: <%= action.action_name %></li>
     <li>Action Status: <%= action.status %></li>
+    <li><a href="/actions/:id/edit">Edit this action</a></li>
   </ul>
 </p>
 <% end %>

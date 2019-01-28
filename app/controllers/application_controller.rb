@@ -13,10 +13,18 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       erb :"/users/index.html"
     else
-      erb :"welcome.html"
-    end
-
+      erb :'welcome.html'
+    end 
   end
 
+  helpers do
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      User.find(session[:user_id])
+    end
+  end
 
 end

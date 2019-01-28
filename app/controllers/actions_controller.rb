@@ -16,7 +16,7 @@ class ActionsController < ApplicationController
   #Update
   get "/actions/:id/edit" do
     @action = Action.find(session[:user_id])
-    @users = User.all
+
     erb :"/actions/edit.html"
   end
 

@@ -46,8 +46,10 @@ class ActionsController < ApplicationController
   end
 
   #Delete
-  delete "/actions/:id/delete" do
-    redirect '/actions'
+  delete "/actions/:id/" do
+    @action = Action.find(params[:id])
+    @action.delete
+    erb :"/actions/index.html"
   end
 
-end
+ end

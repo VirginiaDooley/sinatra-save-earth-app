@@ -3,8 +3,9 @@
 <% @actions.each do |action| %>
 <p>
   <ul>
+    <li>Action #<%= action.id %></li>
     <li>Action Name:<%= action.action_name %></li>
-    <li>Action created by: <%= action.user_id %></li>
+    <li>Action created by User #<%= action.user_id %></li>
     <li>Action Status: <%= action.status %></li>
 </p>
   </ul>

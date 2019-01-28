@@ -1,23 +1,14 @@
-<h5>Update your username:</h5><br>
+<h2>Update your username:</h2><br>
 
 <!-- update -->
-      <form method="post" action="/users/<%= current_user.id %>">
+    <form method="post" action="/users/<%= current_user.id %>">
       <input id="hidden" type="hidden" name="_method" value="PATCH">
+
       <label for="username">Username: </label>
       <input type="text" name="username" value="<%= current_user.username %>">
 
       <input type="submit" value="Submit" id="submit">
-    </form>
+    </form><br>
 
-<!-- <h5>Delete your account below:</h5><br>
-
-<!-- delete -->
-      <!-- <form method="post" action="/users/<%= current_user.id %>">
-      <label for="username">Username: </label>
-      <input type="text" name="username" value="<%= current_user.username %>">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input id="submit" type="submit" value="delete">
-    </form> --> -->
-
-<h5><a href="welcome">Home</a></h5>
+<h5><a href="welcome">Home</a></h5><br>
 <h5><a href="/logout">Log Out</a></h5>

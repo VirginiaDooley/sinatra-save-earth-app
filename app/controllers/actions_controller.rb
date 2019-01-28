@@ -26,23 +26,33 @@ class ActionsController < ApplicationController
 
   get "/actions/:id" do
     @action = Action.find(params[:id])
-    erb :"/actions/show.html"
+    if logged_in?
+      erb :"/actions/show.html"
+    else
+      redirect 'welcome'
+    end
   end
 
   #Update
   get "/actions/:id/edit" do
-    #need to replace session user_id with action id
-    # @action = Action.find(session[:user_id])
     @action = Action.find(params[:id])
     @users = User.all
-    erb :"/actions/edit.html"
+    if logged_in? && @action.user == current_user
+      erb :"/actions/edit.html"
+    else
+      redirect '/actions'
+    end
   end
 
   patch "/actions/:id" do
     @action = Action.find(params[:id])
-    @action.update(params[:action])
-    @action.save
-    redirect "/actions/#{@action.id}"
+    if logged_in? && @action.user == current_user
+      @action.update(params[:action])
+      @action.save
+      redirect "/actions/#{@action.id}"
+    else
+      redirect "/actions/#{@action.id}/edit"
+    end
   end
 
   #Delete
@@ -52,6 +62,7 @@ class ActionsController < ApplicationController
       @action.delete
       redirect "/actions"
     else
+      "This is not your action. You cannot delete it."
       redirect "/actions/#{@action.id}"
     end
   end

@@ -1,15 +1,14 @@
-build
+* build *
 
-fix :id dynamic route for action edit and action show
+create development video for submitting project
 build delete form and route in user and action views and controllers
 create flash messages for update and created action
 create flash message for update username
 add styling to forms
-change action name type from string to text
 add points to the action table so a user can calculate at end
 add image badge for points
+create presentation video
 
-
-research
+* research *
 require_relative vs require in config.ru
 redirect vs erb?

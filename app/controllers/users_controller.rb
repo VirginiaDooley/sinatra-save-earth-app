@@ -50,8 +50,8 @@ class UsersController < ApplicationController
   # end
 
   get '/users/:id' do
-    if logged_in?
-      redirect "/users/index"
+    if logged_in? && current_user
+      erb :"/users/show.html"
     else
       redirect "/users/failure"
     end

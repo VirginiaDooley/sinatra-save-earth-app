@@ -29,7 +29,7 @@ class ActionsController < ApplicationController
     if logged_in?
       erb :"/actions/show.html"
     else
-      redirect 'welcome'
+      redirect '/'
     end
   end
 

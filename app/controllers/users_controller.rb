@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   post "/users/signup" do
-  #does not let a user sign up with a empty field
+  #does not let a user sign up with an empty field
     if params[:username] == "" || params[:password] == ""
       redirect 'users/failure'
     else
@@ -76,8 +76,8 @@ class UsersController < ApplicationController
   end
 
   get "/logout" do
-   session.clear
-   redirect "/"
+    session.clear
+    redirect "/"
   end
 
 end

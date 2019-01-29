@@ -1,7 +1,7 @@
 * build *
 
 Validate uniqueness of user login attribute (username)
-Ensure that users can edit and delete only their own resources - not resources created by other users.
+Validate all user views if logged out
 Validate user input so bad data cannot be persisted to the database.
 create flash messages for update and created action
 create flash message for update username

@@ -41,9 +41,20 @@ class UsersController < ApplicationController
 	  end
   end
 
+  # get "/users/index" do
+  #   if logged_in?
+  #     redirect "/users/index"
+  #   else
+  #     redirect "/"
+  #   end
+  # end
+
   get '/users/:id' do
-    current_user
-    erb :"/users/show.html"
+    if logged_in?
+      redirect "/users/index"
+    else
+      redirect "/users/failure"
+    end
   end
 
   #Update

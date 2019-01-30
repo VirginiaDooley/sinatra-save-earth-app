@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       @user = current_user
       erb :"/users/index.html"
     else
+      flash[:notice] = "You can stop rolling your own now."
       erb :"/users/failure.html"
     end
   end

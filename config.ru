@@ -5,6 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 #To perform other actions such as PUT, PATCH or DELETE, use the Rack::MethodOverride middleware
 use Rack::MethodOverride
+
 run ApplicationController
 use ActionsController
 use UsersController

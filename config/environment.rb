@@ -10,5 +10,3 @@ ActiveRecord::Base.establish_connection(
 
 require './app/controllers/application_controller'
 require_all 'app'
-
-SINATRA_ACTIVESUPPORT_WARNING=false

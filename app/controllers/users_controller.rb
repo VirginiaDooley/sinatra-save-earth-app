@@ -22,7 +22,6 @@ class UsersController < ApplicationController
       @user = current_user
       erb :"/users/index.html"
     else
-      flash[:notice] = "You can stop rolling your own now."
       erb :"/users/failure.html"
     end
   end
@@ -71,9 +70,11 @@ class UsersController < ApplicationController
     user = User.find(session[:user_id])
     session[:user_id] = user.id
     user.username = params[:username]
-    user.save
-    #ADD FLASH MESSAGE HERE TO CONFIRM EDIT
-    redirect "/users/show"
+    #
+    if user.save
+      flash[:message] = "Your update was successful."
+      redirect "/users/show"
+    end
   end
 
   get "/logout" do

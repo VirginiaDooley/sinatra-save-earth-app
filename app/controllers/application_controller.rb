@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    @actions = Action.all
     erb :'welcome.html'
   end
 

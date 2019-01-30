@@ -7,13 +7,13 @@ class UsersController < ApplicationController
 
   post "/users/signup" do
   #does not let a user sign up with an empty field
-    if params[:username] == "" || params[:password] == ""
-      redirect 'users/failure'
-    else
+    # if params[:username] == "" || params[:password] == ""
+    #   redirect 'users/failure'
+    # else
       user = User.create(params)
       session[:user_id] = user.id
       redirect '/users'
-    end
+    # end
   end
 
   #Read

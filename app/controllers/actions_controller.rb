@@ -49,6 +49,7 @@ class ActionsController < ApplicationController
     if logged_in? && @action.user == current_user
       @action.update(params[:action])
       @action.save
+      flash[:message] = "Your update was successful."
       redirect "/actions/#{@action.id}"
     else
       redirect "/actions/#{@action.id}/edit"

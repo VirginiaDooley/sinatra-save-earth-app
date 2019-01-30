@@ -1,7 +1,5 @@
 * build *
 
-Validate uniqueness of user login attribute (username)
-
 Validate all user views if logged out - WHAT TO DO ABOUT USERS/INDEX
 Validate user input so bad data cannot be persisted to the database.
 create flash messages for update and created action
@@ -18,3 +16,4 @@ development video for submitting project https://drive.google.com/file/d/1_vmOX2
 * research *
 require_relative vs require in config.ru
 redirect vs erb?
+instance variables vs ruby variables

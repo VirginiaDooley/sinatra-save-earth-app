@@ -13,7 +13,7 @@ class ActionsController < ApplicationController
   post "/actions/create" do
     @user = current_user
     @action = Action.create(params[:action])
-    @user.actions << @action
+    @user.actions << action
     session[:user_id] = @action.user_id
     redirect "/actions/#{@action.id}"
   end
@@ -26,10 +26,11 @@ class ActionsController < ApplicationController
 
   get "/actions/:id" do
     @action = Action.find(params[:id])
-    if logged_in?
+    @users = User.all
+    if logged_in? && @action.user == current_user
       erb :"/actions/show.html"
     else
-      redirect '/'
+      redirect '/actions'
     end
   end
 
@@ -63,9 +64,9 @@ class ActionsController < ApplicationController
       @action.delete
       redirect "/actions"
     else
-      "This is not your action. You cannot delete it."
+      flash[:message] = "This is not your action. You cannot delete it."
       redirect "/actions/#{@action.id}"
     end
   end
 
- end
+end

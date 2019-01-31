@@ -11,8 +11,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "password_security"
   end
 
-
-
   get "/" do
     @actions = Action.all
 

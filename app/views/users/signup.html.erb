@@ -1,7 +1,13 @@
 <h3>Sign Up</h3>
 
 <form action="signup" method="POST">
-  <input type="text" name="username" placeholder="Username:">
-  <input type="password" name="password" placeholder="Password:">
-  <input type="submit" value="Sign Up">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+  </div>
+  <button type="submit" input type="submit" value="Sign Up" class="btn btn-primary">Sign Up</button>
 </form>

@@ -6,14 +6,9 @@ class UsersController < ApplicationController
   end
 
   post "/users/signup" do
-  #does not let a user sign up with an empty field
-    # if params[:username] == "" || params[:password] == ""
-    #   redirect 'users/failure'
-    # else
-      user = User.create(params)
-      session[:user_id] = user.id
-      redirect '/users'
-    # end
+    user = User.create(params)
+    session[:user_id] = user.id
+    redirect '/users'
   end
 
   #Read
@@ -41,14 +36,6 @@ class UsersController < ApplicationController
 	  end
   end
 
-  # get "/users/index" do
-  #   if logged_in?
-  #     redirect "/users/index"
-  #   else
-  #     redirect "/"
-  #   end
-  # end
-
   get '/users/:id' do
     if logged_in? && current_user
       erb :"/users/show.html"
@@ -65,12 +52,10 @@ class UsersController < ApplicationController
     erb :"/users/edit.html"
   end
 
-  #Patch
   patch "/users/:id" do
     user = User.find(session[:user_id])
     session[:user_id] = user.id
     user.username = params[:username]
-    #
     if user.save
       flash[:message] = "Your update was successful."
       redirect "/users/show"

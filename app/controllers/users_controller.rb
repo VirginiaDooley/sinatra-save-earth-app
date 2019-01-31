@@ -46,8 +46,8 @@ class UsersController < ApplicationController
 
   #Update
   get "/users/:id/edit" do
-    user = User.find(session[:user_id])
-    session[:user_id] = user.id
+    @user = User.find(session[:user_id])
+    session[:user_id] = @user.id
 
     erb :"/users/edit.html"
   end

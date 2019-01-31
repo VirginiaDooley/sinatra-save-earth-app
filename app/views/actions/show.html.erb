@@ -3,17 +3,20 @@
 <% end %>
 
 <h2>Action #<%= @action.id %></h2>
-<p>
-  Action Name: <%= @action.action_name %><br>
-  Action Status: <%= @action.status %>
-</p>
-  <h5><a href="/actions/<%= @action.id %>/edit">Edit this action</a></h5><br>
+  <p>
+    Action Name: <%= @action.action_name %><br>
+    Action Status: <%= @action.status %>
+  </p>
+    <h5>
+      <a href="/actions/<%= @action.id %>/edit">Edit this action</a>
+    </h5>
+    <br>
 
   <!-- delete action-->
-   <form action="/actions/<%= @action.id %>" method="POST">
-     <input type="hidden" name="_method" value="DELETE" id="hidden">
-     <input type="submit" name="submit" value="Delete Action">
-  </form>
-  <br>
+     <form action="/actions/<%= @action.id %>" method="POST">
+       <input type="hidden" name="_method" value="DELETE" id="hidden">
+       <input type="submit" name="submit" value="Delete Action">
+    </form>
+    <br>
 
-<h5><a href="/users">Return to menu</a></h5><br>
+    <h5><a href="/users">Return to menu</a></h5><br>

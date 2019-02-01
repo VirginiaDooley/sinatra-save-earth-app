@@ -24,16 +24,16 @@
         <header class="masthead mb-auto">
           <div class="inner">
             <img src="/images/earth-icon.png">
-            <h3 class="masthead-brand">Save our Earth</h3>
+            <h3 class="masthead-brand">Save the Earth App</h3>
             <nav class="nav nav-masthead justify-content-center">
               <% if logged_in? %>
-                <a class="nav-link active" href="/">Home</a>
-                <a class="nav-link" href="/actions/new">Create an Action</a>
-                <a class="nav-link" href="/actions/show">View my Actions</a>
-                <a class="nav-link" href="/logout">Log Out</a>
+                <a class="btn btn-primary" href="/">Home</a>
+                <a class="btn btn-primary" href="/actions/new">Create an Action</a>
+                <a class="btn btn-primary" href="/actions/show">View my Actions</a>
+                <a class="btn btn-primary" href="/logout">Log Out</a>
               <% else %>
-                <a class="nav-link" href="/users/signup">Sign Up</a>
-                <a class="nav-link" href="/users/login">Log In</a>
+                <a class="btn btn-primary" href="/users/signup">Sign Up</a>
+                <a class="btn btn-primary" href="/users/login">Log In</a>
               <% end %>
             </nav>
           </div>

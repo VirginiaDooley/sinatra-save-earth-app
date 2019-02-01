@@ -17,6 +17,10 @@ class ApplicationController < Sinatra::Base
     erb :'welcome.html'
   end
 
+  get "/ideas" do
+    erb :'ideas.html'
+  end
+
   #Helpers to check current session
   helpers do
 		def logged_in?

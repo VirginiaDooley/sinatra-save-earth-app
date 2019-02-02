@@ -1,3 +1,7 @@
+<% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
+
 <h3>All Actions to date:</h3>
 
 <% @actions.each do |action| %>

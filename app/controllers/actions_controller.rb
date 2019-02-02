@@ -41,20 +41,17 @@ class ActionsController < ApplicationController
     if logged_in? && @action.user == current_user
       erb :"/actions/edit.html"
     else
+      flash[:message] = "You cannot edit this action."
       redirect '/actions'
     end
   end
 
   patch "/actions/:id" do
     @action = Action.find(params[:id])
-    if logged_in? && @action.user == current_user
-      @action.update(params[:action])
-      @action.save
-      flash[:message] = "Your update was successful."
-      redirect "/actions/#{@action.id}"
-    else
-      redirect "/actions/#{@action.id}/edit"
-    end
+    @action.update(params[:action])
+    @action.save
+    flash[:message] = "Your update was successful."
+    redirect "/actions/#{@action.id}"
   end
 
   #Delete

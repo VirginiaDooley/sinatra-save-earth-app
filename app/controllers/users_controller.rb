@@ -32,7 +32,8 @@ class UsersController < ApplicationController
 	    session[:user_id] = user.id
 	    redirect "users"
 	  else
-	    redirect "users/failure"
+      flash[:message] = "Not so fast."
+      redirect "/"
 	  end
   end
 
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
     if logged_in? && current_user
       erb :"/users/show.html"
     else
-      redirect "/users/failure"
+      redirect "/"
     end
   end
 
@@ -48,8 +49,12 @@ class UsersController < ApplicationController
   get "/users/:id/edit" do
     @user = User.find(session[:user_id])
     session[:user_id] = @user.id
-
-    erb :"/users/edit.html"
+    if logged_in? && current_user
+      erb :"/users/edit.html"
+    else
+      flash[:message] = "Don't you dare."
+      redirect "/"
+    end
   end
 
   patch "/users/:id" do
@@ -59,6 +64,9 @@ class UsersController < ApplicationController
     if user.save
       flash[:message] = "Your update was successful."
       redirect "/users/show"
+    else
+      flash[:message] = "Your update was successful."
+      redirect "/users/failure"
     end
   end
 

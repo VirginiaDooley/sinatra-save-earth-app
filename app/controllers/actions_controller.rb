@@ -6,7 +6,7 @@ class ActionsController < ApplicationController
       @user = current_user
       erb :"/actions/new.html"
     else
-      redirect 'users/failure.html'
+      redirect "/"
     end
   end
 
@@ -14,9 +14,14 @@ class ActionsController < ApplicationController
     @user = current_user
     @actions = Action.all
     @action = Action.create(params[:action])
-    @user.actions << @action
-    session[:user_id] = @action.user_id
-    redirect "/actions/#{@action.id}"
+    if @user.actions << @action
+      session[:user_id] = @action.user_id
+      flash[:message] = "You successfully created an action."
+      redirect "/actions/#{@action.id}"
+    else
+      flash[:message] = "Please try again."
+      redirect "/actions/new"
+    end 
   end
 
   #Read

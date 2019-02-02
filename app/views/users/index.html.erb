@@ -1,5 +1,7 @@
+<% if flash.has?(:message) %>
+<%= flash[:message] %>
+<% end %>
+
 <h3>Welcome, <%= current_user.username %></h3><br>
-<h4><a href="/actions/new">Create a new action</a> to save the planet.</h4>
-<h4><a href="/users/show">View your actions</a> to save the planet.</h4>
-<h4><a href="/actions">View all actions</a> to save the planet.</h4>
+
 <h4><a href="/users/<%= current_user.id %>/edit">Edit your username</a></h4>

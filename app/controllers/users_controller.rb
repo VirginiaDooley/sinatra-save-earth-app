@@ -13,11 +13,10 @@ class UsersController < ApplicationController
 
   #Read
   get "/users" do
-    if logged_in?
-      @user = current_user
+    if logged_in? && current_user
       erb :"/users/index.html"
     else
-      erb :"/users/failure.html"
+      redirect '/'
     end
   end
 
@@ -27,21 +26,21 @@ class UsersController < ApplicationController
 
   post "/users/login" do
     user = User.find_by(username: params[:username])
-
-	  if user && user.authenticate(params[:password])
-	    session[:user_id] = user.id
-	    redirect "users"
-	  else
-      flash[:message] = "Not so fast."
-      redirect "/"
-	  end
+  	  if user && user.authenticate(params[:password])
+  	    session[:user_id] = user.id
+  	    redirect '/users'
+  	  else
+        flash[:message] = "Not so fast."
+        redirect '/users/login'
+  	  end
   end
 
   get '/users/:id' do
     if logged_in? && current_user
       erb :"/users/show.html"
     else
-      redirect "/"
+      flash[:message] = "You cannot access user accounts that don't below to you."
+      redirect '/'
     end
   end
 
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
       erb :"/users/edit.html"
     else
       flash[:message] = "Don't you dare."
-      redirect "/"
+      redirect '/'
     end
   end
 
@@ -63,16 +62,16 @@ class UsersController < ApplicationController
     user.username = params[:username]
     if user.save
       flash[:message] = "Your update was successful."
-      redirect "/users/show"
+      redirect '/users/show'
     else
       flash[:message] = "Your update was successful."
-      redirect "/users/failure"
+      redirect '/users/failure'
     end
   end
 
   get "/logout" do
     session.clear
-    redirect "/"
+    redirect '/'
   end
 
 end

@@ -30,7 +30,6 @@ class ActionsController < ApplicationController
     if logged_in? && current_user
       erb :"/actions/show.html"
     else
-      flash[:message] = "You cannot view other user's actions."
       redirect "/actions"
     end
   end
@@ -63,9 +62,9 @@ class ActionsController < ApplicationController
     @action = Action.find_by_id(params[:id])
     if logged_in? && @action.user == current_user
       @action.delete
+      flash[:message] = "Your action has been deleted."
       redirect "/actions"
     else
-      flash[:message] = "This is not your action. You cannot delete it."
       redirect "/actions/#{@action.id}"
     end
   end

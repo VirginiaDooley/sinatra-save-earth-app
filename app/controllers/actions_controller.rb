@@ -3,7 +3,7 @@ class ActionsController < ApplicationController
   #Create
   get "/actions/new" do
     if logged_in?
-      @user = current_user
+      # @user = current_user
       erb :"/actions/new.html"
     else
       redirect "/"
@@ -11,17 +11,20 @@ class ActionsController < ApplicationController
   end
 
   post "/actions/create" do
-    @user = current_user
-    @actions = Action.all
-    @action = Action.create(params[:action])
-    if @user.actions << @action
-      session[:user_id] = @action.user_id
+    #
+    # @user = current_user
+    # @actions = Action.all
+    @action = Action.new(params[:action])
+    @action.user = current_user
+    if @action.save
+      # @action.user << @action
+      # session[:user_id] = @action.user_id
       flash[:message] = "You successfully created an action."
       redirect "/actions/#{@action.id}"
     else
-      flash[:message] = "Please try again."
+      flash[:message] = "You cannot create a blank action. Please try again."
       redirect "/actions/new"
-    end 
+    end
   end
 
   #Read

@@ -6,9 +6,14 @@ class UsersController < ApplicationController
   end
 
   post "/users/signup" do
-    user = User.create(params)
-    session[:user_id] = user.id
-    redirect '/users'
+    # change to instance variable here and in view
+    user = User.new(params)
+    if user.save
+      session[:user_id] = user.id
+      redirect '/users'
+    else
+      user.errors.full_messages.uniq
+    end
   end
 
   #Read

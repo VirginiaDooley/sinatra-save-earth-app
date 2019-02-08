@@ -1,10 +1,13 @@
-Save the Earth App
-An action tracker/to do list to improve your environmental footprint. Record and update your daily actions.
+***Save the Earth App***
 
-Install
-To use this app, just clone, run ```rake db:migrate``` and then run ```shotgun```.
+*Usage*
+An action tracker/to do list to improve your environmental footprint. Create a user account and record your daily actions. Log out/Log in to update your actions.
 
-Contributors
-If you find a bug or have a useful addition, submit a Pull Request to add it to the repo.
+*Run*
+To use this app, just clone the repo, run ```rake db:migrate``` and then run ```shotgun```.
 
-License: https://opensource.org/licenses/MIT
+*Contributing*
+Bug reports and pull requests are welcome on GitHub at https://github.com/virginiadooley/sinatra-save-earth-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+
+*License*
+This app is available as open source under the MIT License: https://opensource.org/licenses/MIT

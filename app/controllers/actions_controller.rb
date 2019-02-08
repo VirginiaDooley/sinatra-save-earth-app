@@ -8,7 +8,7 @@ class ActionsController < ApplicationController
     end
   end
 
-  post "/actions/create" do
+  post "/actions" do
     @action = Action.new(params[:action])
     @action.user = current_user
     if @action.save

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   post "/users/signup" do
-    # change to instance variable here and in view
     user = User.new(params)
     if user.save
       session[:user_id] = user.id

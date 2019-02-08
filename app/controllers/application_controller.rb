@@ -21,7 +21,6 @@ class ApplicationController < Sinatra::Base
     erb :'ideas.html'
   end
 
-  #Helpers to check current session
   helpers do
 		def logged_in?
 			!!session[:user_id]

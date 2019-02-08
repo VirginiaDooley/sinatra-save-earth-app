@@ -1,9 +1,7 @@
 class ActionsController < ApplicationController
 
-  #Create
   get "/actions/new" do
     if logged_in?
-      # @user = current_user
       erb :"/actions/new.html"
     else
       redirect "/"
@@ -11,14 +9,9 @@ class ActionsController < ApplicationController
   end
 
   post "/actions/create" do
-    #
-    # @user = current_user
-    # @actions = Action.all
     @action = Action.new(params[:action])
     @action.user = current_user
     if @action.save
-      # @action.user << @action
-      # session[:user_id] = @action.user_id
       flash[:message] = "You successfully created an action."
       redirect "/actions/#{@action.id}"
     else
@@ -27,7 +20,6 @@ class ActionsController < ApplicationController
     end
   end
 
-  #Read
   get "/actions" do
     @actions = Action.all
     erb :"/actions/index.html"
@@ -42,7 +34,6 @@ class ActionsController < ApplicationController
     end
   end
 
-  #Update
   get "/actions/:id/edit" do
     @action = Action.find(params[:id])
     @users = User.all
@@ -62,7 +53,6 @@ class ActionsController < ApplicationController
     redirect "/actions/#{@action.id}"
   end
 
-  #Delete
   delete "/actions/:id" do
     @action = Action.find_by_id(params[:id])
     if logged_in? && @action.user == current_user

@@ -47,10 +47,15 @@ class ActionsController < ApplicationController
 
   patch "/actions/:id" do
     @action = Action.find(params[:id])
-    @action.update(params[:action])
-    @action.save
-    flash[:message] = "Your update was successful."
-    redirect "/actions/#{@action.id}"
+    if logged_in? && @action.user == current_user
+      @action.update(params[:action])
+      @action.save
+      flash[:message] = "Your update was successful."
+      redirect "/actions/#{@action.id}"
+    else
+      flash[:message] = "Your update was unsuccessful. You need to be logged in."
+      redirect "/"
+    end 
   end
 
   delete "/actions/:id" do

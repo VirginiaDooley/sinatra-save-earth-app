@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   	    session[:user_id] = user.id
   	    redirect '/users'
   	  else
-        flash[:message] = "Not so fast."
+        flash[:message] = "Please try again."
         redirect '/users/login'
   	  end
   end
@@ -64,7 +64,8 @@ class UsersController < ApplicationController
     user = User.find(session[:user_id])
     session[:user_id] = user.id
     user.username = params[:username]
-    if user.save
+    if logged_in? && current_user
+    user.save
       flash[:message] = "Your update was successful."
       redirect '/users/show'
     else

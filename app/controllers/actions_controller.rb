@@ -16,7 +16,7 @@ class ActionsController < ApplicationController
       redirect "/actions/#{@action.id}"
     else
       flash[:message] = "You cannot create a blank action. Please try again."
-      redirect "/actions/new"
+      erb :"/actions/new.html"
     end
   end
 
@@ -27,10 +27,10 @@ class ActionsController < ApplicationController
 
   get "/actions/:id" do
     @action = Action.find(params[:id])
-    if logged_in? && current_user
+    if logged_in? && @action.user == current_user
       erb :"/actions/show.html"
     else
-      redirect "/actions"
+      redirect '/actions'
     end
   end
 
@@ -40,28 +40,28 @@ class ActionsController < ApplicationController
     if logged_in? && @action.user == current_user
       erb :"/actions/edit.html"
     else
-      flash[:message] = "You cannot edit this action."
-      redirect '/actions'
+      flash[:message] = "You do not own this action."
+      redirect '/users/show'
     end
   end
 
   patch "/actions/:id" do
     @action = Action.find(params[:id])
-    if logged_in? && @action.user == current_user
-      @action.update(params[:action])
-      @action.save
+    @action.update(params[:action])
+    if @action.save
       flash[:message] = "Your update was successful."
       redirect "/actions/#{@action.id}"
     else
-      flash[:message] = "Your update was unsuccessful. You need to be logged in."
-      redirect "/"
-    end 
+      flash[:message] = "Please try again."
+      erb :"/actions/edit.html"
+    end
   end
 
   delete "/actions/:id" do
     @action = Action.find_by_id(params[:id])
-    if logged_in? && @action.user == current_user
-      @action.delete
+    if @action.delete
+      # logged_in? && @action.user == current_user
+
       flash[:message] = "Your action has been deleted."
       redirect "/actions"
     else

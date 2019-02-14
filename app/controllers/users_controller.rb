@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   #Read
   get "/users" do
-    if logged_in? && current_user
+    if logged_in?
       erb :"/users/index.html"
     else
       redirect '/'
@@ -36,41 +36,17 @@ class UsersController < ApplicationController
   	  else
         flash[:message] = "Please try again."
         redirect '/users/login'
-  	  end
+      end
   end
 
   get '/users/:id' do
-    if logged_in? && current_user
+    if logged_in? && current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
       erb :"/users/show.html"
     else
       flash[:message] = "You cannot access user accounts that don't below to you."
-      redirect '/'
-    end
-  end
-
-  #Update
-  get "/users/:id/edit" do
-    @user = User.find(session[:user_id])
-    session[:user_id] = @user.id
-    if logged_in? && current_user
-      erb :"/users/edit.html"
-    else
-      flash[:message] = "Don't you dare."
-      redirect '/'
-    end
-  end
-
-  patch "/users/:id" do
-    user = User.find(session[:user_id])
-    session[:user_id] = user.id
-    user.username = params[:username]
-    if logged_in? && current_user
-    user.save
-      flash[:message] = "Your update was successful."
-      redirect '/users/show'
-    else
-      flash[:message] = "Your update was successful."
-      redirect '/users/failure'
+      flash[:message] = nil
+      redirect '/users'
     end
   end
 

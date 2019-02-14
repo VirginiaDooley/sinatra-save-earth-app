@@ -44,9 +44,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       erb :"/users/show.html"
     else
-      flash[:message] = "You cannot access user accounts that don't below to you."
-      flash[:message] = nil
-      redirect '/users'
+      flash[:message] = "You cannot access accounts that do not belong to you."
+      erb :"/users/index.html"
     end
   end
 

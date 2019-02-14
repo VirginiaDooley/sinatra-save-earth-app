@@ -3,13 +3,13 @@
 <% end %>
 
 <h3>Update your username:</h3><br>
-  <form method="post" action="/users/<%= current_user.id %>">
+  <form method="post" action="/users/<%= @user.id %>">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
       <div class="form-group">
         <label for="username">New Username:</label>
         <input type="text"
         name="username"
-        value="<%= current_user.username %>"
+        value="<%= @user.username %>"
         class="form-control"
         id="username">
       </div>

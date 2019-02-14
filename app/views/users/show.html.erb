@@ -1,11 +1,13 @@
 <% if flash.has?(:message) %>
 <%= flash[:message] %>
+<%= flash[:message].nil %>
 <% end %>
 
-<h3>Username: <%= current_user.username %></h3>
+<h3>Username: <%= @user.username %></h3>
+<h3>User ID: <%= @user.id %></h3>
 <h4>These are your actions to date. Click on an action to edit or delete.</h4>
 
-<% current_user.actions.each do |action| %>
+<% @user.actions.each do |action| %>
 <p>
   <ul>
     <li><a href="/actions/<%= action.id %>">Action #<%= action.id %></a></li>
@@ -14,5 +16,3 @@
   </ul>
 </p>
 <% end %>
-
-<h5><a href="/users">Return to main menu</a></h5>
